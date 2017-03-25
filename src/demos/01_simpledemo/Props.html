@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Demo</title>
+<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+</head>
+<body>
+  <div id="example"></div>
+<script type="text/babel">
+var Clothing = React.createClass({
+  render : function(){
+    return (
+            <div>
+              <h1>Item: {this.props.title}</h1>
+              <h2>Price: {this.props.price}</h2>
+              </div>
+    );
+  }
+});
+ReactDOM.render(<div><Clothing title="Shirt" price="1099" />
+<Clothing title="T-Shirt" price="699" />
+<Clothing title="Denim Jeans" price="1999" />
+<Clothing title="Trousers" price="999" /></div>,document.getElementById('example'));
+</script>
+</body>
+</html>
