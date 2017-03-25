@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Demo</title>
+  <link rel="stylesheet" type="text/css" href="C:\Users\Ayush\Desktop\React-Boilerplate-master\src\css\main.css" >
+<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+<script type="text/babel">
+var Comment = React.createClass({
+  edit: function() {
+    alert("Editing Comment");
+  },
+  remove: function() {
+    alert("Removing Comment");
+  },
+  render : function(){
+    return (
+            <div className="commentContainer">
+            <div className="commentText">{this.props.children}</div>
+            <button onClick={this.edit} className="button-primary">Edit</button>
+              <button onClick={this.remove} className="button-danger">Remove</button>
+              </div>
+    );
+  }
+});
+ReactDOM.render(<div className="board">
+<Comment>Hello</Comment>
+<Comment>Hie</Comment>
+<Comment>Hey</Comment>
+</div>,document.getElementById('container'));
+</script>
+</body>
+</html>
