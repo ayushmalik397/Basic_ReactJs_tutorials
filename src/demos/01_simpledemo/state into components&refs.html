@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Demo</title>
+  <link rel="stylesheet" type="text/css" href="C:\Users\Ayush\Desktop\Basic ReactJs\src\css\main.css" >
+<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+<script type="text/babel">
+var Comment = React.createClass({
+  getInitialState: function(){
+    return {editing: false}
+  },
+  edit: function() {
+    this.setState({editing:true});
+  },
+  remove: function() {
+    alert("Removing Comment");
+  },
+  save: function() {
+    var val= this.refs.newText.value;
+    console.log("New Comment: "+val);
+    this.setState({editing:false});
+  },
+  renderNormal : function(){
+    return(
+      <div className="commentContainer">
+      <div className="commentText">{this.props.children}</div>
+      <button onClick={this.edit} className="button-primary">Edit</button>
+        <button onClick={this.remove} className="button-danger">Remove</button>
+        </div>
+    );
+  },
+  renderForm : function(){
+    return(
+      <div className="commentContainer">
+      <textarea ref="newText" defaultValue={this.props.children}></textarea>
+      <button onClick={this.save} className="button-success">Save</button>
+      </div>
+    );
+  },
+  render : function(){
+          if(this.state.editing){
+            return this.renderForm();
+          }
+          else{
+            return this.renderNormal();
+          }
+  }
+});
+ReactDOM.render(<div className="board">
+<Comment>Hello</Comment>
+<Comment>Hie</Comment>
+<Comment>Hey</Comment>
+</div>,document.getElementById('container'));
+</script>
+</body>
+</html>
